@@ -5,6 +5,11 @@ if test =~# '\v\*.*'
     echom "prev line starts with * (is a list)"
 endif
 
+let test="* notes"
+if test =~# '\s*\*'
+    echom "starts with star"
+endif
+
 
 
 if exists('b:did_indent')
@@ -41,6 +46,7 @@ function! GetNotesIndent(lnum)
 
 
     let indent = indent(lnum)
+    echom "current indent=" . indent
     " if ( prevline =~ b:indent_block_start )
     "     let indent = indent + &sw
     " endif
@@ -49,10 +55,15 @@ function! GetNotesIndent(lnum)
     " endif
     " return indent
 
-    if prevline =~# '\v\*.*'
-        echom "prev line starts with * (is a list)"
-        return 2
+    if prevline =~# '\v(\*|#).*'
+        echom "prev line starts with * or # (is a list)"
+        let spaces_after_star = 1
+        " the +1 is because the * itself counts as part of the indent
+        let new_indent = indent + spaces_after_star + 1
+        return new_indent
     endif
+
+    return indent
 
 endfunction
 
