@@ -10,7 +10,8 @@ unlet! b:current_syntax
 
 " https://jonasjacek.github.io/colors/
 let brightBlue=[81, "#5fd7ff"]
-let brightOrange=[208, "#ff8700"] 
+" let brightOrange=[208, "#ff8700"] 
+let brightOrange=[214, "#ff8700"] 
 
 " the 3rd argument is the optional background
 function! MakeHighlight(name, fg, ...)
@@ -29,7 +30,7 @@ call MakeHighlight("NotesHeader", brightOrange)
 " syn case ignore
 
 syn match notesListMarker "\v\s*(\*|#)" 
-syn match notesHeaderUnderline "\v\w*\n\=\=\=\=*" 
+syn match notesHeaderUnderline "\v.*\w.*\n\=\=\=\=*" 
 syn keyword notesTodo TODO NOTE skipwhite
 
 " hi def link markdownListMarker htmlTagName
