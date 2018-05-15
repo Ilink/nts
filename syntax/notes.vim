@@ -29,7 +29,7 @@ call MakeHighlight("NotesHeader", brightOrange)
 
 " syn case ignore
 
-syn region notesListMarker start="\v\s*(\*|#)" end="" keepend
+syn region notesListMarker start="\v^\s*(\*|#)" end="" keepend
 syn region notesHeaderUnderline start="\v.*\w\n\=\=\=" end="=$" keepend
 syn keyword notesTodo TODO NOTE skipwhite
 
