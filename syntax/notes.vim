@@ -29,8 +29,8 @@ call MakeHighlight("NotesHeader", brightOrange)
 
 " syn case ignore
 
-syn match notesListMarker "\v\s*(\*|#)" 
-syn match notesHeaderUnderline "\v.*\w.*\n\=\=\=\=*" 
+syn region notesListMarker start="\v\s*(\*|#)" end="" keepend
+syn region notesHeaderUnderline start="\v.*\w\n\=\=\=" end="=$" keepend
 syn keyword notesTodo TODO NOTE skipwhite
 
 " hi def link markdownListMarker htmlTagName
